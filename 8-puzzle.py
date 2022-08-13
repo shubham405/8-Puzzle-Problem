@@ -1,6 +1,4 @@
-""" Name:- Shubham kumar
-    Roll No:- 2211CS16
-    Dept:- Computer Science and Engineering """
+""" 8 Puzzle Problem """
 from dfs import DFS
 from bfs import BFS
 
