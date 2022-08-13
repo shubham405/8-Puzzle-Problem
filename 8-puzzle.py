@@ -5,10 +5,9 @@ from bfs import BFS
 
 def getInvCount(arr):
     inv_count = 0
-    empty_value = -1
     for i in range(0, 9):
         for j in range(i + 1, 9):
-            if arr[j] != empty_value and arr[i] != empty_value and arr[i] > arr[j]:
+            if arr[j] != 0 and arr[i] != 0 and arr[i] > arr[j]:
                 inv_count += 1
     return inv_count
 
@@ -32,17 +31,25 @@ if __name__ == "__main__":
         goal.append(list(map(int, input().strip().split())))
     if isSolvable(start):
 
-        algo = int(input("Enter 1 for BFS and 2 for DFS: "))
-        # start = [[3, 2, 1], [4, 5, 6], [8, 7, 0]]
-        # goal = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
-        if algo == 1:
-            x = BFS(start, goal)
-            calculateTime = x.bfs(start)
-            print(f"BFS algorithms takes {calculateTime} second to execute")
-        elif algo == 2:
-            calculateTime = DFS(start, goal).dfs(start)
-            print(f"DFS algorithms takes {calculateTime} second to execute")
+        # algo = int(input("Enter 1 for BFS and 2 for DFS: "))
+        # # start = [[3, 2, 1], [4, 5, 6], [8, 7, 0]]
+        # # goal = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+        # if algo == 1:
+        callBfs = BFS(start, goal)
+        calculateBFS = callBfs.bfs(start)
+        callDfs=DFS(start, goal)
+        calculateDFS = callDfs.dfs(start)
+        print(f"BFS algorithms takes {calculateBFS[0]} steps & {calculateBFS[1]} second to execute")
+        print(f"DFS algorithms takes {calculateDFS[0]} steps & {calculateDFS[1]} second to execute")
+        stepDiff=calculateBFS[0] - calculateDFS[0]
+        if calculateDFS[0]<calculateBFS[0]:
+
+            print(f"BFS take {abs(stepDiff)} steps more than DFS ")
+        elif calculateBFS[0]<calculateDFS[0]:
+            print(f"DFS take {abs(stepDiff)} steps more than BFS ")
         else:
-            print("Invalid Choice")
+            print("Both take equal number of steps")
+
+
     else:
         print("Puzzle is not solvable")
