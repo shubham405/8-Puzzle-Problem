@@ -68,7 +68,7 @@ class BFS:
         while len(self.queue) != 0:
             countSteps = countSteps + 1
             currentNode = self.queue.popleft()
-            PrintNode.printExploredNode(currentNode,countSteps,"BFS")
+            #PrintNode.printExploredNode(currentNode,countSteps,"BFS")
             if currentNode == self.goal:
                 endTime = time.time()
                 totalTimeTaken = endTime - startTime

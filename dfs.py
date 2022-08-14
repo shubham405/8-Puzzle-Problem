@@ -63,7 +63,7 @@ class DFS:
         while len(self.stack) != 0:
             countSteps = countSteps + 1
             curNode = self.stack.pop()
-            PrintNode.printExploredNode(curNode, countSteps,"DFS")
+            #PrintNode.printExploredNode(curNode, countSteps,"DFS")
             if curNode == self.goal:
                 totalTimeTaken = time.time() - timeNow
                 totalTimeTaken=round(totalTimeTaken,2)
